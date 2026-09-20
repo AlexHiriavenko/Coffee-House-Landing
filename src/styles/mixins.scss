@@ -1,0 +1,31 @@
+@mixin flex-sb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin link-animation {
+    &::before {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: #403f3d;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        transform: scaleX(0);
+        opacity: 0;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    }
+
+    &:hover::before {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}

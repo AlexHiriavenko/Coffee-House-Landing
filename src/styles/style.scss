@@ -1,0 +1,41 @@
+@use "./reset";
+@use "./variables" as vars;
+@use "../components/header/header";
+
+:root {
+  font-family: "Inter", "system-ui", "Avenir", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  color: vars.$textColorDark;
+}
+
+body {
+  background-color: vars.$mainBgColor;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+#app {
+  min-height: 100%;
+  max-width: 1440px;
+  padding: 20px 40px 40px;
+  background-color: vars.$mainBgColor;
+  margin-inline: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@media (max-width: 680px) {
+  #app {
+    padding: 20px 16px 40px;
+  }
+}
