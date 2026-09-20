@@ -1,0 +1,47 @@
+@use "../../../../styles/globals" as *;
+
+.btn-arrow {
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $mainBgColor;
+  border: 1px solid $borderColorDark;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: $textColorDark;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: $borderColorDark;
+    color: $textColorLight;
+  }
+}
+
+@media (hover: none) {
+  .btn-arrow:hover {
+    background-color: $mainBgColor;
+    color: $textColorDark;
+  }
+}
+
+// @media (hover: none) {
+//     .btn-arrow:active {
+//         background-color: $borderColorDark;
+//         color: $textColorLight;
+//     }
+// }
+
+@media (max-width: $tablet) {
+  .btn-arrow.right {
+    margin-right: auto;
+  }
+
+  .btn-arrow.left {
+    margin-left: auto;
+  }
+}

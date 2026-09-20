@@ -1,2 +1,2 @@
 import './styles/style.scss';
-import './components/header/header.js';
+import './components/shared/header/header.js';

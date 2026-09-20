@@ -1,0 +1,24 @@
+@use "../../../../styles/globals" as *;
+
+.pagination {
+  margin-top: 30px;
+  @include flex-center;
+  gap: 6px;
+
+  &__line-wrap {
+    padding: 5px 3px;
+  }
+
+  &__line {
+    background-color: $borderColorLight;
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+  }
+}
+
+.progress-bar {
+  background-color: $borderColorDark;
+  height: 100%;
+  width: 0%;
+}

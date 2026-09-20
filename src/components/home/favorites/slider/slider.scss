@@ -1,0 +1,22 @@
+.wrapper-slider {
+  max-width: 480px;
+  overflow-x: hidden;
+}
+
+.slide {
+  position: relative;
+  display: flex;
+  transition-duration: 0.7s;
+}
+
+.slide.start {
+  transform: translateX(0);
+}
+
+.slide.mid {
+  transform: translateX(-100%);
+}
+
+.slide.end {
+  transform: translateX(-200%);
+}

@@ -1,0 +1,147 @@
+@use "../../../styles/globals" as *;
+
+.footer {
+  display: flex;
+  column-gap: 5.5%;
+  padding: 100px;
+  background-color: $containerBgColor;
+  border-radius: 40px;
+  margin-top: 94px;
+  width: 100%;
+  min-height: 450px;
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.footer-title {
+  color: $textColorLight;
+  font-size: 60px;
+  line-height: 125%;
+}
+
+.social-media {
+  max-width: 530px;
+  &__list {
+    display: flex;
+    margin-top: 40px;
+    gap: 12px;
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $borderColorDark;
+    border: 1px solid $borderColorLight;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: $borderColorLight;
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      background-color: $textColorLight;
+      border-color: $textColorLight;
+      color: $textColorDark;
+      font-weight: 600;
+    }
+  }
+}
+
+.contacts {
+  padding-block: 34px;
+  padding-inline: 36px;
+  &__title {
+    color: $textColorLight;
+    font-size: 24px;
+    line-height: 125%;
+    margin-bottom: 38px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__list-item {
+    display: flex;
+  }
+  &__list-item a:visited {
+    color: $textColorLight;
+  }
+  &__list-item > *:first-child {
+    @include flex-center;
+    gap: 8px;
+  }
+  &__list-item span {
+    color: $textColorLight;
+  }
+}
+
+.contacts__list-item a {
+  position: relative;
+  @include link-animation;
+  &::before {
+    background-color: $textColorLight;
+    bottom: -4px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer {
+    margin-top: 100px;
+    flex-direction: column;
+    row-gap: 100px;
+    padding-inline: 60px;
+    padding-bottom: 104px;
+    height: auto;
+  }
+  .contacts {
+    margin-top: 1px;
+    padding: 0;
+    &__title {
+      margin-bottom: 39px;
+    }
+  }
+  .social-media {
+    margin-top: -1px;
+  }
+}
+
+@media (hover: none) {
+  .contacts__list-item a {
+    &::before {
+      display: none;
+    }
+  }
+  .social-media {
+    &__link {
+      &:hover {
+        background-color: $borderColorDark;
+        border-color: $borderColorLight;
+        color: $borderColorLight;
+      }
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .footer {
+    margin-top: 100px;
+    padding: 62px 16px;
+    row-gap: 39px;
+  }
+  .footer-title {
+    font-size: 32px;
+    line-height: 125%;
+  }
+}
+
+@media (max-width: 340px) {
+  .contacts__list-item a {
+    font-size: 14px;
+  }
+  .contact-item {
+    font-size: 14px;
+  }
+}

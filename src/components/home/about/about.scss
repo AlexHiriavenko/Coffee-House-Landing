@@ -1,0 +1,122 @@
+#about {
+    margin-top: 95px;
+}
+
+#about .section-title {
+    text-align: left;
+}
+
+.gallery {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    max-height: 1100px;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    gap: 40px;
+}
+
+.gallery picture {
+    display: flex;
+    width: 660px;
+    max-width: calc(50% - 20px);
+    max-height: 430px;
+    overflow: hidden;
+    border-radius: 20px;
+
+    & img {
+        // object-position: center;
+        object-fit: contain;
+        width: 100%;
+        max-width: 100%;
+        transition: transform 0.5s ease;
+        transform: scale(1.23);
+    }
+
+    &:hover img {
+        transform: scale(1.13);
+    }
+
+    &:first-of-type {
+        max-height: 590px;
+    }
+
+    &:last-of-type {
+        max-height: 590px;
+    }
+}
+
+.gallery picture:nth-of-type(2),
+.gallery picture:nth-of-type(3) {
+    img {
+        transform: scale(1.7);
+    }
+
+    &:hover img {
+        transform: scale(1.53);
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery picture:nth-of-type(2),
+    .gallery picture:nth-of-type(3) {
+        display: none;
+    }
+
+    .gallery {
+        flex-wrap: nowrap;
+        max-height: 4000px;
+    }
+
+    .gallery picture {
+        width: 100%;
+        max-width: 100%;
+
+        & img {
+            object-fit: cover;
+            transform: scale(1.055);
+        }
+        &:hover img {
+            transform: scale(1);
+        }
+    }
+}
+
+@media (hover: none) {
+    .gallery picture {
+        &:hover img {
+            transform: scale(1.055);
+            @media (max-width: 480px) {
+                transform: scale(1.23);
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #about {
+        margin-top: 97px;
+    }
+    .gallery picture {
+        margin-top: -1px;
+        height: 590px;
+        & img {
+            max-width: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.23);
+            // object-position: center;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .gallery picture {
+        height: 500px;
+        & img {
+            transform: scale(1);
+        }
+    }
+}

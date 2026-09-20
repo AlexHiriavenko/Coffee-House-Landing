@@ -1,0 +1,112 @@
+@use "../../../styles/globals" as *;
+
+.menu-title {
+  margin-top: 20px;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.menu-items {
+  margin-top: 39px;
+  @include flex-center;
+  gap: 14px;
+  margin-bottom: 39px;
+}
+
+.menu-item_btn {
+  display: flex;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid $borderColorLight;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  background-color: $mainBgColor;
+  color: $textColorDark;
+  font-size: 16px;
+  line-height: 150%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-item_btn.selected {
+  background-color: $containerBgColor;
+  color: $textColorLight;
+  border-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.menu-item_btn .icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $borderColorLight;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-item_btn:hover {
+  background-color: $containerBgColor;
+  color: $textColorLight;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.reload-btn {
+  display: none;
+  margin-inline: auto;
+}
+
+@media (max-width: 992px) {
+  .menu-item_btn {
+    padding: 8px 16px 8px 8px;
+  }
+  .reload-btn {
+    display: block;
+    height: 60px;
+    width: 60px;
+    background-color: inherit;
+    margin-bottom: 101px;
+  }
+  .reload-btn.hidden {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .menu-item_btn:hover {
+    background-color: $mainBgColor;
+    color: $textColorDark;
+    border-color: $borderColorLight;
+  }
+  .menu-item_btn.selected {
+    background-color: $containerBgColor;
+    color: $textColorLight;
+    border-color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 740px) {
+  .menu-items {
+    gap: 8px;
+  }
+  .menu-item_btn {
+    padding: 8px 15px 8px 7px;
+  }
+  .reload-btn {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 369px) {
+  .menu-item_btn {
+    gap: 4px;
+    font-size: 14px;
+    padding: 6px 12px 6px 6px;
+  }
+}

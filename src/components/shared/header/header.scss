@@ -1,0 +1,153 @@
+@use "../../../styles/globals" as *;
+
+.header {
+  margin-top: -2px;
+  margin-bottom: 22px;
+  height: 60px;
+  @include flex-sb;
+}
+
+nav {
+  transition: all 0.64s ease-in-out;
+
+  @media (max-width: $tablet) {
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    top: 100px;
+    right: 0;
+    height: calc(100% - 100px);
+    width: 0;
+    z-index: 3;
+    background-color: $mainBgColor;
+  }
+}
+
+nav.burger-open {
+  width: 100%;
+}
+
+.nav-list {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  position: relative;
+
+  &__item {
+    min-width: max-content;
+  }
+
+  &__link {
+    min-width: max-content;
+    color: $textColorDark;
+    position: relative;
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    @include link-animation;
+
+    &:visited {
+      color: $textColorDark;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px;
+    gap: 60px;
+
+    &__link {
+      font-size: 32px;
+      line-height: 1.25;
+    }
+  }
+}
+
+.menu-link.mobile {
+  display: none;
+
+  @media (max-width: $tablet) {
+    box-sizing: content-box;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    max-width: max-content;
+    margin-inline: auto;
+    font-size: 32px;
+    line-height: 1.25;
+    margin-top: 37px;
+  }
+
+  img {
+    width: 40px;
+    margin-top: 4px;
+  }
+}
+
+.menu-link {
+  position: relative;
+  color: $textColorDark;
+  @include flex-center;
+  @include link-animation;
+  gap: 8px;
+
+  span {
+    line-height: 1.5;
+    color: $textColorDark;
+  }
+
+  img {
+    align-self: flex-start;
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.home-link {
+  padding-top: 10px;
+}
+
+.header-burger {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: flex;
+  }
+
+  width: 45px;
+  height: 45px;
+  margin-top: 2px;
+  background-color: inherit;
+  border: 1px solid $borderColorDark;
+  border-radius: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  &__line {
+    width: 16px;
+    border: 1px solid $textColorDark;
+    transform-origin: center;
+    transition-duration: 0.64s;
+  }
+
+  &__line.top.opened {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  &__line.bottom.opened {
+    transform: translateY(-5px) rotate(-45deg);
+    margin-top: 1.3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-burger {
+    margin-top: 4px;
+  }
+}
