@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: $backdropColor;
+  background-color: var(--bg-overlay);
   @include flex-center;
   opacity: 0;
   pointer-events: none;
@@ -24,7 +24,7 @@
   max-width: 800px;
   padding: 16px;
   border-radius: 40px;
-  background-color: $mainBgColor;
+  background-color: var(--bg-page);
   transform: scale(0.5);
   transition-duration: 0.5s;
   display: flex;
@@ -52,15 +52,15 @@
   width: 100%;
   font-size: 16px;
   line-height: 1.5;
-  color: $textColorDark;
+  color: var(--text-primary);
   padding-block: 10px;
   border-radius: 100px;
-  border: 1px solid $borderColorDark;
+  border: 1px solid var(--border-inverse);
   background-color: inherit;
   transition-duration: 0.5s;
   &:hover {
-    background-color: $containerBgColor;
-    color: $textColorLight;
+    background-color: var(--bg-container);
+    color: var(--text-inverse);
   }
 }
 
@@ -80,7 +80,7 @@
 .modal-drink-name {
   font-size: 24px;
   line-height: 1.25;
-  color: $textColorDark;
+  color: var(--text-primary);
   margin-bottom: 11px;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .modal-drink-note {
-  border-top: 1px solid $borderColorLight;
+  border-top: 1px solid var(--border-primary);
   padding-block: 12px;
   display: flex;
   align-items: flex-start;
@@ -118,7 +118,7 @@
 }
 
 .note-svg {
-  color: $textColorDark;
+  color: var(--text-primary);
   position: relative;
   bottom: 7px;
 }
@@ -137,9 +137,9 @@
   gap: 8px;
   padding: 8px 15px 8px 8px;
   border-radius: 100px;
-  border: 1px solid $borderColorLight;
+  border: 1px solid var(--border-primary);
   background-color: inherit;
-  color: $textColorDark;
+  color: var(--text-primary);
   transition-duration: 0.5s;
   span:first-of-type {
     display: flex;
@@ -149,21 +149,21 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: $borderColorLight;
+    background-color: var(--border-primary);
   }
 }
 
 .modal-drink-params-btn.active {
-  background-color: $containerBgColor;
-  color: $textColorLight;
+  background-color: var(--bg-container);
+  color: var(--text-inverse);
   span:first-of-type {
-    background-color: $mainBgColor;
-    color: $textColorDark;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
   }
 }
 
 .modal-drink-total-price {
-  color: $textColorDark;
+  color: var(--text-primary);
   display: flex;
   font-size: 24px;
   line-height: 1.25;

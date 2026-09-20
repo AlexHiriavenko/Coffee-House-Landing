@@ -5,7 +5,7 @@ section:not(:first-of-type) {
 }
 
 .section-title {
-  color: $textColorDark;
+  color: var(--text-primary);
   text-align: center;
   font-size: 60px;
   line-height: 125%;

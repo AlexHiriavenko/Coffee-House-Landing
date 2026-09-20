@@ -19,7 +19,7 @@
     margin-bottom: 4px;
   }
 
-  @media (min-width: $tablet + 1) and (max-width: 860px) {
+  @media (min-width: ($tablet + 1px)) and (max-width: 860px) {
     margin-left: 0;
   }
 
@@ -41,7 +41,7 @@ nav {
     height: calc(100% - 100px);
     width: 0;
     z-index: 3;
-    background-color: $mainBgColor;
+    background-color: var(--bg-page);
   }
 }
 
@@ -56,7 +56,7 @@ nav.burger-open {
   gap: 40px;
   position: relative;
 
-  @media (min-width: $tablet + 1) and (max-width: 860px) {
+  @media (min-width: ($tablet + 1px)) and (max-width: 860px) {
     gap: 16px;
   }
 
@@ -66,7 +66,7 @@ nav.burger-open {
 
   &__link {
     min-width: max-content;
-    color: $textColorDark;
+    color: var(--text-primary);
     position: relative;
     display: block;
     font-size: 16px;
@@ -74,7 +74,7 @@ nav.burger-open {
     @include link-animation;
 
     &:visited {
-      color: $textColorDark;
+      color: var(--text-primary);
     }
   }
 
@@ -107,25 +107,26 @@ nav.burger-open {
     margin-top: 37px;
   }
 
-  img {
+  svg {
     width: 40px;
+    height: 40px;
     margin-top: 4px;
   }
 }
 
 .menu-link {
   position: relative;
-  color: $textColorDark;
+  color: var(--text-primary);
   @include flex-center;
   @include link-animation;
   gap: 8px;
 
   span {
     line-height: 1.5;
-    color: $textColorDark;
+    color: var(--text-primary);
   }
 
-  img {
+  svg {
     align-self: flex-start;
   }
 
@@ -136,6 +137,7 @@ nav.burger-open {
 
 .home-link {
   padding-top: 10px;
+  color: var(--text-primary);
 }
 
 .header-burger {
@@ -148,7 +150,7 @@ nav.burger-open {
   width: 44px;
   height: 44px;
   background-color: inherit;
-  border: 1px solid $borderColorDark;
+  border: 1px solid var(--border-inverse);
   border-radius: 50%;
   flex-direction: column;
   align-items: center;
@@ -157,7 +159,7 @@ nav.burger-open {
 
   &__line {
     width: 16px;
-    border: 1px solid $textColorDark;
+    border: 1px solid var(--text-primary);
     transform-origin: center;
     transition-duration: 0.64s;
   }

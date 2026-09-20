@@ -6,7 +6,7 @@
   width: 88px;
   height: 44px;
   padding: 3px;
-  border: 1px solid $borderColorLight;
+  border: 1px solid var(--border-primary);
   border-radius: 100px;
 
   &__btn {
@@ -20,15 +20,16 @@
     cursor: pointer;
 
     &[data-theme="light"] {
-      color: $textColorLight;
+      color: var(--text-inverse);
     }
 
     &[data-theme="dark"] {
-      color: $textColorDark;
+      color: var(--text-primary);
     }
 
-    &[aria-pressed="true"] {
-      background-color: $textColorAccent;
+    :root[data-theme="light"] &[data-theme="light"],
+    :root[data-theme="dark"] &[data-theme="dark"] {
+      background-color: var(--text-accent);
     }
   }
 

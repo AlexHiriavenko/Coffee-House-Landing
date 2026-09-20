@@ -13,9 +13,9 @@
   width: 200px;
   height: 64px;
   border-radius: 100px;
-  border: 1px solid $borderColorDark;
-  background-color: $mainBgColor;
-  color: $textColorDark;
+  border: 1px solid var(--border-inverse);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   transition: all 0.5s;
 
   &__text-container {
@@ -29,7 +29,7 @@
   &__text {
     margin-top: -2px;
     margin-bottom: 2px;
-    color: $textColorDark;
+    color: var(--text-primary);
     font-size: 10px;
     line-height: 140%;
     transition: color 0.8s;
@@ -37,21 +37,21 @@
 
   &__name {
     font-size: 16px;
-    color: $textColorDark;
+    color: var(--text-primary);
     line-height: 150%;
     transition: color 0.8s;
   }
 
   &:hover {
-    background-color: $borderColorDark;
+    background-color: var(--bg-container);
   }
 
   &:hover span {
-    color: $textColorLight;
+    color: var(--text-inverse);
   }
 
   &:hover svg {
-    color: $textColorLight;
+    color: var(--text-inverse);
   }
 
   svg {
@@ -77,10 +77,10 @@
     background-color: inherit;
   }
   .btn-mobile-app:hover span {
-    color: $textColorDark;
+    color: var(--text-primary);
   }
   .btn-mobile-app:hover svg {
-    color: $textColorDark;
+    color: var(--text-primary);
   }
 }
 

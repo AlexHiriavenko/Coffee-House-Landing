@@ -1,5 +1,3 @@
-@use "./variables" as vars;
-
 @mixin flex-sb {
     display: flex;
     align-items: center;
@@ -17,7 +15,7 @@
         content: "";
         width: 100%;
         height: 2px;
-        background-color: vars.$textColorDark;
+        background-color: var(--text-primary);
         position: absolute;
         left: 0;
         bottom: -4px;

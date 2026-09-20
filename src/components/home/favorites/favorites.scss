@@ -30,7 +30,7 @@
   &__title {
     font-size: 24px;
     line-height: 1.25;
-    color: $textColorDark;
+    color: var(--text-primary);
     text-align: center;
   }
 
@@ -39,13 +39,13 @@
     font-weight: 400;
     line-height: 150%;
     text-align: center;
-    color: $textColorDark;
+    color: var(--text-primary);
   }
 
   &__price {
     margin-top: -1px;
     font-size: 24px;
-    color: $textColorDark;
+    color: var(--text-primary);
   }
 
   &__img {

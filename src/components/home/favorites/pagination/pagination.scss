@@ -10,13 +10,13 @@
   }
 
   &__line {
-    background-color: $borderColorLight;
+    background-color: var(--border-primary);
     width: 40px;
     height: 4px;
     border-radius: 100px;
 
     &.active {
-      background-color: $borderColorDark;
+      background-color: var(--border-inverse);
     }
   }
 }

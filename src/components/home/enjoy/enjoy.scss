@@ -28,7 +28,7 @@
   }
 
   &__title {
-    color: $textColorLight;
+    color: var(--text-inverse);
     text-shadow: 1px 1px 1px $textShadowColor;
     font-size: 72px;
     line-height: 105%;
@@ -36,7 +36,7 @@
   }
 
   &__description {
-    color: $textColorLight;
+    color: var(--text-inverse);
     text-shadow: 1px 1px 1px $textShadowColor;
     font-size: 16px;
     line-height: 150%;
@@ -46,7 +46,7 @@
 
 .accent {
   font-family: "Inter", sans-serif;
-  color: $textColorAccent;
+  color: var(--text-accent);
   font-style: italic;
 }
 
@@ -60,17 +60,18 @@
   width: 200px;
   border: 0;
   border-radius: 100px;
-  background-color: $mainBgColor;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   padding: 20px 78px;
 
   &__text {
     font-size: 16px;
     line-height: 150%;
-    color: $textColorDark;
+    color: var(--text-primary);
     transition: all 0.5s;
   }
 
-  &__img {
+  svg {
     position: absolute;
     right: 63px;
     width: 20px;
@@ -79,7 +80,7 @@
     transition: all 0.5s;
   }
 
-  &:hover img {
+  &:hover svg {
     opacity: 1;
   }
 
@@ -95,7 +96,7 @@
   }
 
   .btn-home {
-    &__img {
+    svg {
       opacity: 1;
     }
 

@@ -4,7 +4,7 @@
   display: flex;
   column-gap: 5.5%;
   padding: 100px;
-  background-color: $containerBgColor;
+  background-color: var(--bg-container);
   border-radius: 40px;
   margin-top: 94px;
   width: 100%;
@@ -16,7 +16,7 @@
 }
 
 .footer-title {
-  color: $textColorLight;
+  color: var(--text-inverse);
   font-size: 60px;
   line-height: 125%;
 }
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $borderColorDark;
+    background-color: var(--bg-container);
     border: 1px solid $borderColorLight;
     width: 60px;
     height: 60px;
@@ -41,8 +41,8 @@
     cursor: pointer;
     transition: all 0.5s;
     &:hover {
-      background-color: $textColorLight;
-      border-color: $textColorLight;
+      background-color: var(--text-inverse);
+      border-color: var(--text-inverse);
       color: $textColorDark;
       font-weight: 600;
     }
@@ -53,7 +53,7 @@
   padding-block: 34px;
   padding-inline: 36px;
   &__title {
-    color: $textColorLight;
+    color: var(--text-inverse);
     font-size: 24px;
     line-height: 125%;
     margin-bottom: 38px;
@@ -67,14 +67,14 @@
     display: flex;
   }
   &__list-item a:visited {
-    color: $textColorLight;
+    color: var(--text-inverse);
   }
   &__list-item > *:first-child {
     @include flex-center;
     gap: 8px;
   }
   &__list-item span {
-    color: $textColorLight;
+    color: var(--text-inverse);
   }
 }
 
@@ -82,7 +82,7 @@
   position: relative;
   @include link-animation;
   &::before {
-    background-color: $textColorLight;
+    background-color: var(--text-inverse);
     bottom: -4px;
   }
 }
@@ -117,7 +117,7 @@
   .social-media {
     &__link {
       &:hover {
-        background-color: $borderColorDark;
+        background-color: var(--bg-container);
         border-color: $borderColorLight;
         color: $borderColorLight;
       }

@@ -1,5 +1,6 @@
 @use "./reset";
 @use "./variables" as vars;
+@use "./theme";
 @use "../components/shared/header/header";
 @use "../components/shared/footer/footer";
 @use "../components/home/home";
@@ -21,12 +22,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  color: vars.$textColorDark;
+  color: var(--text-primary);
 }
 
 .menu-page {
   .nav-list__link {
-    color: vars.$textColorDark;
+    color: var(--text-primary);
   }
 
   .header .menu-link {
@@ -49,7 +50,7 @@
 }
 
 body {
-  background-color: vars.$mainBgColor;
+  background-color: var(--bg-page);
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
@@ -60,7 +61,7 @@ body {
   min-height: 100%;
   max-width: vars.$desktop;
   padding: 20px 40px 40px;
-  background-color: vars.$mainBgColor;
+  background-color: var(--bg-page);
   margin-inline: auto;
   overflow-x: hidden;
   position: relative;
