@@ -1,0 +1,44 @@
+@use "../../../../styles/globals" as *;
+
+.theme-switch {
+  @include flex-center;
+  gap: 8px;
+  width: 88px;
+  height: 44px;
+  padding: 3px;
+  border: 1px solid $borderColorLight;
+  border-radius: 100px;
+
+  &__btn {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+
+    &[data-theme="light"] {
+      color: $textColorLight;
+    }
+
+    &[data-theme="dark"] {
+      color: $textColorDark;
+    }
+
+    &[aria-pressed="true"] {
+      background-color: $textColorAccent;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    width: 104px;
+    height: 52px;
+
+    &__btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+}

@@ -14,11 +14,9 @@
     width: 40px;
     height: 4px;
     border-radius: 100px;
-  }
-}
 
-.progress-bar {
-  background-color: $borderColorDark;
-  height: 100%;
-  width: 0%;
+    &.active {
+      background-color: $borderColorDark;
+    }
+  }
 }

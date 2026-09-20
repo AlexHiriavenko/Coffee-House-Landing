@@ -1,4 +1,5 @@
 @use "../../../styles/globals" as *;
+@use "./theme-switch/theme-switch";
 
 .header {
   margin-top: -2px;
@@ -7,7 +8,28 @@
   @include flex-sb;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 4px;
+  margin-left: 44px;
+
+  .menu-link {
+    margin-bottom: 4px;
+  }
+
+  @media (min-width: $tablet + 1) and (max-width: 860px) {
+    margin-left: 0;
+  }
+
+  @media (max-width: 480px) {
+    gap: 12px;
+  }
+}
+
 nav {
+  flex: 1;
   transition: all 0.64s ease-in-out;
 
   @media (max-width: $tablet) {
@@ -30,8 +52,13 @@ nav.burger-open {
 .nav-list {
   width: 100%;
   display: flex;
+  justify-content: center;
   gap: 40px;
   position: relative;
+
+  @media (min-width: $tablet + 1) and (max-width: 860px) {
+    gap: 16px;
+  }
 
   &__item {
     min-width: max-content;
@@ -118,9 +145,8 @@ nav.burger-open {
     display: flex;
   }
 
-  width: 45px;
-  height: 45px;
-  margin-top: 2px;
+  width: 44px;
+  height: 44px;
   background-color: inherit;
   border: 1px solid $borderColorDark;
   border-radius: 50%;
@@ -143,11 +169,5 @@ nav.burger-open {
   &__line.bottom.opened {
     transform: translateY(-5px) rotate(-45deg);
     margin-top: 1.3px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-burger {
-    margin-top: 4px;
   }
 }
