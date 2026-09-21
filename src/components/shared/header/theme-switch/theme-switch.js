@@ -1,14 +1,11 @@
 class Theme {
   static STORAGE_KEY = 'theme';
   static THEMES = ['light', 'dark'];
-  static TRANSITION_CLASS = 'theme-transition';
-  static TRANSITION_MS = 350;
 
   constructor(root, buttons) {
     this.root = root;
     this.buttons = buttons;
     this.systemQuery = matchMedia('(prefers-color-scheme: dark)');
-    this.transitionTimer = null;
   }
 
   get system() {
@@ -39,12 +36,17 @@ class Theme {
 
   change(theme) {
     if (this.root.dataset.theme === theme) return;
-    this.root.classList.add(Theme.TRANSITION_CLASS);
-    this.apply(theme);
-    clearTimeout(this.transitionTimer);
-    this.transitionTimer = setTimeout(() => {
-      this.root.classList.remove(Theme.TRANSITION_CLASS);
-    }, Theme.TRANSITION_MS);
+
+    const canAnimate =
+      document.startViewTransition &&
+      document.visibilityState === 'visible' &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (canAnimate) {
+      document.startViewTransition(() => this.apply(theme));
+    } else {
+      this.apply(theme);
+    }
   }
 
   init() {
