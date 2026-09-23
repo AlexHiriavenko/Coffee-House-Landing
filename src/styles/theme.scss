@@ -1,0 +1,25 @@
+@use "./variables" as *;
+
+:root {
+  color-scheme: light;
+
+  --bg-page: light-dark(#{$mainBgColor}, #{$darkBgPage});
+  --bg-container: light-dark(#{$containerBgColor}, #{$darkBgContainer});
+  --bg-overlay: light-dark(#{$backdropColor}, #{$darkBgOverlay});
+
+  --text-primary: light-dark(#{$textColorDark}, #{$darkTextPrimary});
+  --border-primary: light-dark(#{$borderColorLight}, #{$darkBorderPrimary});
+  --border-inverse: light-dark(#{$borderColorDark}, #{$darkBorderInverse});
+
+  --text-inverse: #{$textColorLight};
+  --text-accent: #{$textColorAccent};
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}

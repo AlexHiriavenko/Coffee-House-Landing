@@ -1,0 +1,60 @@
+<div id="modal-container">
+  <div id="modal-content" onclick="event.stopPropagation();">
+    <div class="modal-card-photo-wrap">
+      <img
+        src="/src/assets/images/MenuPage/coffee-1.png"
+        alt="card image"
+        class="modal-card-photo"
+      />
+    </div>
+    <div class="modal-card-description">
+      <div class="modal-drink-info">
+        <h3 class="modal-drink-name">Irish coffee</h3>
+        <p class="modal-drink-about">
+          Fragrant black coffee with Jameson Irish whiskey and whipped milk
+        </p>
+      </div>
+      <div class="modal-drink-params size">
+        <h4 class="modal-drink-params__title">Size</h4>
+        <div class="modal-drink-params__btnGroup">
+          <button class="modal-drink-params-btn active" disabled data-size="s">
+            <span>S</span><span class="drink-size">200 ml</span>
+          </button>
+          <button class="modal-drink-params-btn" data-size="m">
+            <span>M</span><span class="drink-size">300 ml</span>
+          </button>
+          <button class="modal-drink-params-btn" data-size="l">
+            <span>L</span><span class="drink-size">400 ml</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-drink-params additives">
+        <h4 class="modal-drink-params__title">Additives</h4>
+        <div class="modal-drink-params__btnGroup">
+          <button class="modal-drink-params-btn" data-additive1="0">
+            <span>1</span><span class="additives-name">Sugar</span>
+          </button>
+          <button class="modal-drink-params-btn" data-additive2="1">
+            <span>2</span><span class="additives-name">Cinnamon</span>
+          </button>
+          <button class="modal-drink-params-btn" data-additive3="2">
+            <span>3</span><span class="additives-name">Syrup</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-drink-total-price">
+        <p>Total:</p>
+        <p>$<span class="drink-total-price">7.00</span></p>
+      </div>
+      <div class="modal-drink-note">
+        {{> shared/icons/note-icon }}
+        <p>
+          The cost is not final. Download our mobile app to see the final price
+          and place your order. Earn loyalty points and enjoy your favorite
+          coffee with up to 20% discount.
+        </p>
+      </div>
+      <button class="btn-close-modal">Close</button>
+    </div>
+  </div>
+</div>

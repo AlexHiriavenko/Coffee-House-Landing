@@ -1,0 +1,38 @@
+<header class="header">
+    <a class="home-link" href="{{basePath}}">{{> shared/icons/logo }}</a>
+    <nav>
+        <ul class="nav-list">
+            <li class="nav-list__item">
+                <a class="nav-list__link" href="{{basePath}}#favorite">Favorite coffee</a>
+            </li>
+            <li class="nav-list__item"
+                ><a class="nav-list__link" href="{{basePath}}#about">About</a></li
+            >
+            <li class="nav-list__item"
+                ><a class="nav-list__link" href="{{basePath}}#MobApp"
+                    >Mobile app</a
+                ></li
+            >
+            <li class="nav-list__item"
+                ><a class="nav-list__link" href="#contacts"
+                    >Contact us</a
+                ></li
+            >
+        </ul>
+        <a class="menu-link mobile" href="{{basePath}}menu/">
+            <span>Menu</span>
+            {{> shared/icons/coffee-cup }}
+        </a>
+    </nav>
+    <div class="header-actions">
+        {{> shared/header/theme-switch/theme-switch }}
+        <a class="menu-link desctop" href="{{basePath}}menu/">
+            <span>Menu</span>
+            {{> shared/icons/coffee-cup }}
+        </a>
+        <button class="header-burger" type="button" aria-label="Open menu">
+            <span class="header-burger__line top"></span>
+            <span class="header-burger__line bottom"></span>
+        </button>
+    </div>
+</header>

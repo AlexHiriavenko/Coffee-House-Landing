@@ -1,0 +1,56 @@
+@use "../../../../styles/globals" as *;
+
+@media (max-width: $tablet) {
+  #modal-content {
+    gap: 20px;
+  }
+  .modal-card-photo-wrap {
+    width: 47.2%;
+  }
+  .modal-card-description {
+    width: 49.7%;
+  }
+
+  .modal-drink-note {
+    margin-top: 0;
+    padding-top: 9px;
+    padding-bottom: 17px;
+  }
+  .modal-drink-note svg {
+    width: 39px;
+    height: 39px;
+  }
+  .note-svg {
+    bottom: 11px;
+  }
+  .btn-close-modal {
+    margin-top: -7px;
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 760px) {
+  #modal-container {
+    padding-inline: 19px;
+  }
+  #modal-content {
+    max-width: 546px;
+  }
+  .modal-card-photo-wrap {
+    display: none;
+  }
+  .modal-card-description {
+    width: 100%;
+  }
+  .modal-drink-note {
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+  .modal-drink-note svg {
+    width: 41px;
+    height: 41px;
+  }
+  .note-svg {
+    bottom: 11px;
+  }
+}

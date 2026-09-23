@@ -1,0 +1,22 @@
+@use "../../../../styles/globals" as *;
+
+.pagination {
+  margin-top: 30px;
+  @include flex-center;
+  gap: 6px;
+
+  &__line-wrap {
+    padding: 5px 3px;
+  }
+
+  &__line {
+    background-color: var(--border-primary);
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+
+    &.active {
+      background-color: var(--border-inverse);
+    }
+  }
+}

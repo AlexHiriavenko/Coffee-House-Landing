@@ -1,0 +1,175 @@
+@use "../../../styles/globals" as *;
+@use "./media-styles/modal";
+
+#modal-container {
+  width: 100vw;
+  height: 100vh;
+  padding-inline: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-overlay);
+  @include flex-center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+#modal-container.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#modal-content {
+  max-width: 800px;
+  padding: 16px;
+  border-radius: 40px;
+  background-color: var(--bg-page);
+  transform: scale(0.5);
+  transition-duration: 0.5s;
+  display: flex;
+  gap: 2.5%;
+}
+
+#modal-content.active {
+  transform: scale(1);
+}
+
+.modal-card-photo-wrap {
+  width: 40.5%;
+}
+
+.modal-card-description {
+  width: 57.2%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btn-close-modal {
+  margin-top: -4px;
+  margin-bottom: -2px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  padding-block: 10px;
+  border-radius: 100px;
+  border: 1px solid var(--border-inverse);
+  background-color: inherit;
+  transition-duration: 0.5s;
+  &:hover {
+    background-color: var(--bg-container);
+    color: var(--text-inverse);
+  }
+}
+
+.modal-card-photo-wrap {
+  display: block;
+  width: 310px;
+  height: 310px;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.modal-card-photo {
+  width: 100%;
+  transform: scale(1.1);
+}
+
+.modal-drink-name {
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 11px;
+}
+
+.modal-drink-about {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.modal-drink-params__title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  margin-bottom: 7px;
+}
+
+.modal-drink-note {
+  border-top: 1px solid var(--border-primary);
+  padding-block: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: -1px;
+}
+
+.modal-drink-note p {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+.modal-drink-note svg {
+  width: 30px;
+  height: 30px;
+}
+
+.note-svg {
+  color: var(--text-primary);
+  position: relative;
+  bottom: 7px;
+}
+
+.modal-drink-params__btnGroup {
+  display: flex;
+  column-gap: 8px;
+  row-gap: 7px;
+  flex-wrap: wrap;
+}
+
+.modal-drink-params-btn {
+  min-width: 97px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px 8px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border-primary);
+  background-color: inherit;
+  color: var(--text-primary);
+  transition-duration: 0.5s;
+  span:first-of-type {
+    display: flex;
+    padding: 3px 7px 3px 8px;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--border-primary);
+  }
+}
+
+.modal-drink-params-btn.active {
+  background-color: var(--bg-container);
+  color: var(--text-inverse);
+  span:first-of-type {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+  }
+}
+
+.modal-drink-total-price {
+  color: var(--text-primary);
+  display: flex;
+  font-size: 24px;
+  line-height: 1.25;
+  @include flex-sb;
+}
+
+.modal-drink-params.additives {
+  margin-top: -1px;
+}

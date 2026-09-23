@@ -1,0 +1,45 @@
+@use "../../../../styles/globals" as *;
+
+.theme-switch {
+  @include flex-center;
+  gap: 8px;
+  width: 88px;
+  height: 44px;
+  padding: 3px;
+  border: 1px solid var(--border-primary);
+  border-radius: 100px;
+
+  &__btn {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+
+    &[data-theme="light"] {
+      color: var(--text-inverse);
+    }
+
+    &[data-theme="dark"] {
+      color: var(--text-primary);
+    }
+
+    :root[data-theme="light"] &[data-theme="light"],
+    :root[data-theme="dark"] &[data-theme="dark"] {
+      background-color: var(--text-accent);
+    }
+  }
+
+  @media (max-width: $tablet) {
+    width: 104px;
+    height: 52px;
+
+    &__btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+}

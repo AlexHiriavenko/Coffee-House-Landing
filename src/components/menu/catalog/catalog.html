@@ -1,0 +1,36 @@
+<h1 class="section-title menu-title">
+  Behind each of our cups hides an
+  <span class="accent">amazing surprise</span>
+</h1>
+<div class="menu">
+  <ul class="menu-items">
+    <li class="menu-item">
+      <button class="menu-item_btn selected" disabled data-category="coffee">
+        <span class="icon-wrapper">
+          <img src="/src/assets/images/MenuPage/main/cup.png" alt="cup of coffee" />
+        </span>
+        <span>Coffee</span>
+      </button>
+    </li>
+    <li class="menu-item">
+      <button class="menu-item_btn" data-category="tea">
+        <span class="icon-wrapper">
+          <img src="/src/assets/images/MenuPage/main/tea.png" alt="Tea" />
+        </span>
+        <span>Tea</span>
+      </button>
+    </li>
+    <li class="menu-item">
+      <button class="menu-item_btn" data-category="dessert">
+        <span class="icon-wrapper">
+          <img src="/src/assets/images/MenuPage/main/cake.png" alt="Dessert" />
+        </span>
+        <span>Dessert</span>
+      </button>
+    </li>
+  </ul>
+  {{> menu/product-list/product-list }}
+  <button class="reload-btn" type="button" aria-label="Load more products">
+    {{> shared/icons/reload }}
+  </button>
+</div>

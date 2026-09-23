@@ -1,0 +1,19 @@
+<section class="favorite-coffee" id="favorite">
+  <h2 class="section-title">
+    Choose your
+    <span class="accent">favorite</span>
+    coffee
+  </h2>
+  <div class="slider">
+    <div class="slider-body">
+      <div class="btn-container">
+        {{> home/favorites/buttons/left }}
+      </div>
+      {{> home/favorites/slider/slider }}
+      <div class="btn-container">
+        {{> home/favorites/buttons/right }}
+      </div>
+    </div>
+    {{> home/favorites/pagination/pagination }}
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{> shared/header/theme-switch/theme-init }}
+    <link rel="icon" type="image/x-icon" href="/src/assets/images/fav-coffee-house.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Coffee House</title>
+  </head>
+
+  <body>
+    <div id="app">
+      {{> shared/header/header }}
+      <main class="main">
+        {{> home/enjoy/enjoy }}
+        {{> home/favorites/favorites }}
+        {{> home/about/about }}
+        {{> home/mobile-app/mobile-app }}
+      </main>
+      {{> shared/footer/footer }}
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

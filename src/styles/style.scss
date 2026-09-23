@@ -1,0 +1,80 @@
+@use "./reset";
+@use "./variables" as vars;
+@use "./theme";
+@use "../components/shared/header/header";
+@use "../components/shared/footer/footer";
+@use "../components/home/home";
+@use "../components/home/enjoy/enjoy";
+@use "../components/home/favorites/favorites";
+@use "../components/home/about/about";
+@use "../components/home/mobile-app/mobile-app";
+@use "../components/menu/catalog/catalog";
+@use "../components/menu/product-list/product-list";
+@use "../components/menu/product-card/product-card";
+@use "../components/menu/modal/modal";
+
+:root {
+  font-family: "Inter", "system-ui", "Avenir", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  color: var(--text-primary);
+}
+
+.menu-page {
+  .nav-list__link {
+    color: var(--text-primary);
+  }
+
+  .header .menu-link {
+    pointer-events: none;
+
+    &::before {
+      transform: scaleX(1);
+      opacity: 1;
+      bottom: -4px;
+    }
+  }
+
+  .social-media__link svg {
+    color: vars.$textColorLight;
+  }
+
+  .social-media__link:hover svg {
+    color: vars.$textColorDark;
+  }
+}
+
+body {
+  background-color: var(--bg-page);
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+#app {
+  min-height: 100%;
+  max-width: vars.$desktop;
+  padding: 20px 40px 40px;
+  background-color: var(--bg-page);
+  margin-inline: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@media (max-width: 680px) {
+  #app {
+    padding: 20px 16px 40px;
+  }
+}
+
+@media (max-width: vars.$tablet) {
+  .menu-page .header .menu-link {
+    pointer-events: auto;
+  }
+}

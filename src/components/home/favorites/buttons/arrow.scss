@@ -1,0 +1,40 @@
+@use "../../../../styles/globals" as *;
+
+.btn-arrow {
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-inverse);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: var(--bg-container);
+    color: var(--text-inverse);
+  }
+}
+
+@media (hover: none) {
+  .btn-arrow:hover {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+  }
+}
+
+@media (max-width: $tablet) {
+  .btn-arrow.right {
+    margin-right: auto;
+  }
+
+  .btn-arrow.left {
+    margin-left: auto;
+  }
+}
