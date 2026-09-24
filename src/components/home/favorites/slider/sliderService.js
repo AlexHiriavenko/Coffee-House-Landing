@@ -94,6 +94,7 @@ export function createSliderService(sliderSection) {
     nextSlideBtn.addEventListener('click', goToNextSlide);
     prevSlideBtn.addEventListener('click', goToPreviousSlide);
     track.addEventListener('transitionend', handleSlideTransitionEnd);
+    track.addEventListener('transitioncancel', handleSlideTransitionEnd);
   }
 
   return { init };
