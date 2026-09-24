@@ -1,73 +1,21 @@
+import { createSliderService } from './sliderService.js';
+
 const sliderSection = document.querySelector('.slider');
 
 if (sliderSection) {
+  const {
+    slider,
+    nextSlideBtn,
+    prevSlideBtn,
+    prepareSlider,
+    goToNextSlide,
+    goToPreviousSlide,
+    handleSlideTransitionEnd,
+  } = createSliderService(sliderSection);
 
-  const slider = sliderSection.querySelector('.slide.start');
-  const slides = [...slider.children];
-  const slideCount = slides.length;
-  const SLIDE_SHIFT_PERCENT = 100;
+  prepareSlider();
 
-  const nextSlideBtn = sliderSection.querySelector('.btn-arrow.right');
-  const prevSlideBtn = sliderSection.querySelector('.btn-arrow.left');
-  const paginationLines = [...sliderSection.querySelectorAll('.pagination__line')];
-
-  slider.prepend(slides.at(-1).cloneNode(true));
-  slider.append(slides[0].cloneNode(true));
-  slider.style.transform = `translateX(-${SLIDE_SHIFT_PERCENT}%)`;
-  void slider.offsetWidth;
-  slider.classList.add('is-ready');
-
-  let currentIndex = 1;
-  let isAnimationInProgress = false;
-
-  function updatePagination(index) {
-    const activeIndex = (index - 1 + slideCount) % slideCount;
-
-    paginationLines.forEach((line, i) => {
-      line.classList.toggle('active', i === activeIndex);
-    });
-  }
-
-  function goToSlide(index) {
-    if (isAnimationInProgress) return;
-
-    isAnimationInProgress = true;
-    currentIndex = index;
-    updatePagination(index);
-    slider.style.transform = `translateX(-${index * SLIDE_SHIFT_PERCENT}%)`;
-  }
-
-  function enableAnimation(element) {
-    element.style.removeProperty('transition');
-  }
-
-  function disableAnimation(element) {
-    element.style.transition = 'none';
-  }
-
-  nextSlideBtn.addEventListener('click', () => {
-    goToSlide(currentIndex + 1);
-  });
-
-  prevSlideBtn.addEventListener('click', () => {
-    goToSlide(currentIndex - 1);
-  });
-
-  slider.addEventListener('transitionend', (event) => {
-
-    if (event.target !== slider || event.propertyName !== 'transform') return;
-
-    const isOnCloneSlide = currentIndex === 0 || currentIndex === slideCount + 1;
-
-    if (isOnCloneSlide) {
-      disableAnimation(slider);
-      currentIndex = currentIndex === 0 ? slideCount : 1;
-      slider.style.transform = `translateX(-${currentIndex * SLIDE_SHIFT_PERCENT}%)`;
-      void slider.offsetWidth;
-
-      enableAnimation(slider);
-    }
-
-    isAnimationInProgress = false;
-  });
+  nextSlideBtn.addEventListener('click', goToNextSlide);
+  prevSlideBtn.addEventListener('click', goToPreviousSlide);
+  slider.addEventListener('transitionend', handleSlideTransitionEnd);
 }
