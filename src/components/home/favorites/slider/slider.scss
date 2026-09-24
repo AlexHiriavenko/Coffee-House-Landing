@@ -1,13 +1,13 @@
-.wrapper-slider {
+.slider__viewport {
   max-width: 480px;
   overflow-x: hidden;
 }
 
-.slide {
+.slider__track {
   position: relative;
   display: flex;
-}
 
-.slide.is-ready {
-  transition: transform var(--slider-animation-duration) ease-in-out;
+  &.is-ready {
+    transition: transform var(--slider-animation-duration) ease-in-out;
+  }
 }

@@ -1,31 +1,42 @@
 export function createSliderService(sliderSection) {
-  const slider = sliderSection.querySelector('.slide.start');
-  const slides = [...slider.children];
+  const track = sliderSection.querySelector('.slider__track');
+  const slides = [...track.children];
   const slideCount = slides.length;
   const SLIDE_SHIFT_PERCENT = 100;
 
   const nextSlideBtn = sliderSection.querySelector('.btn-arrow.right');
   const prevSlideBtn = sliderSection.querySelector('.btn-arrow.left');
   const paginationLines = [...sliderSection.querySelectorAll('.pagination__line')];
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   let currentIndex = 1;
   let isAnimationInProgress = false;
 
-  function updatePagination(index) {
-    const activeIndex = (index - 1 + slideCount) % slideCount;
+  function createClone(slide) {
+    const clone = slide.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+
+    return clone;
+  }
+
+  function setTrackPosition(slideIndex) {
+    track.style.transform = `translateX(-${slideIndex * SLIDE_SHIFT_PERCENT}%)`;
+  }
+
+  function prepareSlider() {
+    track.prepend(createClone(slides.at(-1)));
+    track.append(createClone(slides[0]));
+    setTrackPosition(currentIndex);
+    void track.offsetWidth;
+    track.classList.add('is-ready');
+  }
+
+  function setActivePaginationLine(slideIndex) {
+    const activeIndex = (slideIndex - 1 + slideCount) % slideCount;
 
     paginationLines.forEach((line, i) => {
       line.classList.toggle('active', i === activeIndex);
     });
-  }
-
-  function goToSlide(index) {
-    if (isAnimationInProgress) return;
-
-    isAnimationInProgress = true;
-    currentIndex = index;
-    updatePagination(index);
-    slider.style.transform = `translateX(-${index * SLIDE_SHIFT_PERCENT}%)`;
   }
 
   function enableAnimation(element) {
@@ -36,32 +47,37 @@ export function createSliderService(sliderSection) {
     element.style.transition = 'none';
   }
 
-  function handleSlideTransitionEnd(event) {
-    if (event.target !== slider || event.propertyName !== 'transform') return;
-
+  function finishSlideTransition() {
     const isOnCloneSlide = currentIndex === 0 || currentIndex === slideCount + 1;
 
     if (isOnCloneSlide) {
-      disableAnimation(slider);
+      disableAnimation(track);
       currentIndex = currentIndex === 0 ? slideCount : 1;
-      slider.style.transform = `translateX(-${currentIndex * SLIDE_SHIFT_PERCENT}%)`;
-      void slider.offsetWidth;
+      setTrackPosition(currentIndex);
+      void track.offsetWidth;
 
-      enableAnimation(slider);
+      enableAnimation(track);
     }
 
     isAnimationInProgress = false;
   }
 
-  function prepareSlider() {
-    slider.prepend(slides.at(-1).cloneNode(true));
-    slider.append(slides[0].cloneNode(true));
-    slider.style.transform = `translateX(-${SLIDE_SHIFT_PERCENT}%)`;
-    void slider.offsetWidth;
-    slider.classList.add('is-ready');
+  function goToSlide(slideIndex) {
+    if (isAnimationInProgress) return;
 
-    currentIndex = 1;
-    isAnimationInProgress = false;
+    isAnimationInProgress = true;
+    currentIndex = slideIndex;
+    setActivePaginationLine(slideIndex);
+    setTrackPosition(slideIndex);
+
+    // Without animation there is no `transitionend`, so finish the move right away
+    if (reducedMotionQuery.matches) finishSlideTransition();
+  }
+
+  function handleSlideTransitionEnd(event) {
+    if (event.target !== track || event.propertyName !== 'transform') return;
+
+    finishSlideTransition();
   }
 
   function goToNextSlide() {
@@ -72,13 +88,13 @@ export function createSliderService(sliderSection) {
     goToSlide(currentIndex - 1);
   }
 
-  return {
-    slider,
-    nextSlideBtn,
-    prevSlideBtn,
-    prepareSlider,
-    goToNextSlide,
-    goToPreviousSlide,
-    handleSlideTransitionEnd,
-  };
+  function init() {
+    prepareSlider();
+
+    nextSlideBtn.addEventListener('click', goToNextSlide);
+    prevSlideBtn.addEventListener('click', goToPreviousSlide);
+    track.addEventListener('transitionend', handleSlideTransitionEnd);
+  }
+
+  return { init };
 }

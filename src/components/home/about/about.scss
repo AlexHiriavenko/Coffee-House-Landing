@@ -6,6 +6,12 @@
     text-align: left;
 }
 
+@media (max-width: 760px) {
+    .about .section-title {
+        font-size: 32px;
+    }
+}
+
 .gallery {
     margin-top: 40px;
     display: flex;

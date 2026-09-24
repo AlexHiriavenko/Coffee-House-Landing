@@ -6,17 +6,19 @@
 .slider {
   --slider-animation-duration: 0.5s;
   margin-top: 40px;
+
+  @media (prefers-reduced-motion: reduce) {
+    --slider-animation-duration: 0s;
+  }
 }
 
-.slider-body {
+.slider__body {
   width: 100%;
   @include flex-sb;
 }
 
 .drink-card {
-  width: 100%;
-  max-width: 480px;
-  min-width: 100%;
+  flex: 0 0 100%;
   display: flex;
   gap: 20px;
   flex-direction: column;
@@ -56,12 +58,6 @@
   }
 }
 
-@media (max-width: 760px) {
-  .about .section-title {
-    font-size: 32px;
-  }
-}
-
 @media (max-width: 480px) {
   #favorite {
     margin-top: 101px;
@@ -70,16 +66,10 @@
     display: none;
   }
 
-  .slider .slide {
+  .slider__track .drink-card img {
     width: 100%;
-    .drink-card {
-      width: 100%;
-      & img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-      }
-    }
+    max-width: 100%;
+    height: auto;
   }
   .drink-card {
     &__description {
