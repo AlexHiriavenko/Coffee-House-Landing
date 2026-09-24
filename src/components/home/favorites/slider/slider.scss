@@ -1,6 +1,7 @@
 .slider__viewport {
   max-width: 480px;
   overflow-x: hidden;
+  touch-action: pan-y;
 }
 
 .slider__track {

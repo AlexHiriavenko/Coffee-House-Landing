@@ -1,8 +1,10 @@
 export function createSliderService(sliderSection) {
+  const viewport = sliderSection.querySelector('.slider__viewport');
   const track = sliderSection.querySelector('.slider__track');
   const slides = [...track.children];
   const slideCount = slides.length;
   const SLIDE_SHIFT_PERCENT = 100;
+  const SWIPE_THRESHOLD_PX = 50;
 
   const nextSlideBtn = sliderSection.querySelector('.btn-arrow.right');
   const prevSlideBtn = sliderSection.querySelector('.btn-arrow.left');
@@ -11,6 +13,8 @@ export function createSliderService(sliderSection) {
 
   let currentIndex = 1;
   let isAnimationInProgress = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
 
   function createClone(slide) {
     const clone = slide.cloneNode(true);
@@ -88,11 +92,35 @@ export function createSliderService(sliderSection) {
     goToSlide(currentIndex - 1);
   }
 
+  function handleTouchStart(event) {
+    const { clientX, clientY } = event.changedTouches[0];
+
+    touchStartX = clientX;
+    touchStartY = clientY;
+  }
+
+  function handleTouchEnd(event) {
+    const { clientX, clientY } = event.changedTouches[0];
+    const deltaX = clientX - touchStartX;
+    const deltaY = clientY - touchStartY;
+
+    const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
+    if (!isHorizontalSwipe || Math.abs(deltaX) < SWIPE_THRESHOLD_PX) return;
+
+    if (deltaX < 0) {
+      goToNextSlide();
+    } else {
+      goToPreviousSlide();
+    }
+  }
+
   function init() {
     prepareSlider();
 
     nextSlideBtn.addEventListener('click', goToNextSlide);
     prevSlideBtn.addEventListener('click', goToPreviousSlide);
+    viewport.addEventListener('touchstart', handleTouchStart, { passive: true });
+    viewport.addEventListener('touchend', handleTouchEnd, { passive: true });
     track.addEventListener('transitionend', handleSlideTransitionEnd);
     track.addEventListener('transitioncancel', handleSlideTransitionEnd);
   }
