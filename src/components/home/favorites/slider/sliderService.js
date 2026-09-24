@@ -1,3 +1,5 @@
+import { createClone, enableAnimation, disableAnimation } from './sliderHelpers.js';
+
 export function createSliderService(sliderSection) {
   const viewport = sliderSection.querySelector('.slider__viewport');
   const track = sliderSection.querySelector('.slider__track');
@@ -16,21 +18,14 @@ export function createSliderService(sliderSection) {
   let touchStartX = 0;
   let touchStartY = 0;
 
-  function createClone(slide) {
-    const clone = slide.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-
-    return clone;
-  }
-
-  function setTrackPosition(slideIndex) {
+  function moveTrack(slideIndex) {
     track.style.transform = `translateX(-${slideIndex * SLIDE_SHIFT_PERCENT}%)`;
   }
 
   function prepareSlider() {
     track.prepend(createClone(slides.at(-1)));
     track.append(createClone(slides[0]));
-    setTrackPosition(currentIndex);
+    moveTrack(currentIndex);
     void track.offsetWidth;
     track.classList.add('is-ready');
   }
@@ -43,21 +38,13 @@ export function createSliderService(sliderSection) {
     });
   }
 
-  function enableAnimation(element) {
-    element.style.removeProperty('transition');
-  }
-
-  function disableAnimation(element) {
-    element.style.transition = 'none';
-  }
-
   function finishSlideTransition() {
     const isOnCloneSlide = currentIndex === 0 || currentIndex === slideCount + 1;
 
     if (isOnCloneSlide) {
       disableAnimation(track);
       currentIndex = currentIndex === 0 ? slideCount : 1;
-      setTrackPosition(currentIndex);
+      moveTrack(currentIndex);
       void track.offsetWidth;
 
       enableAnimation(track);
@@ -72,7 +59,7 @@ export function createSliderService(sliderSection) {
     isAnimationInProgress = true;
     currentIndex = slideIndex;
     setActivePaginationLine(slideIndex);
-    setTrackPosition(slideIndex);
+    moveTrack(slideIndex);
 
     // Without animation there is no `transitionend`, so finish the move right away
     if (reducedMotionQuery.matches) finishSlideTransition();
@@ -105,7 +92,10 @@ export function createSliderService(sliderSection) {
     const deltaY = clientY - touchStartY;
 
     const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
-    if (!isHorizontalSwipe || Math.abs(deltaX) < SWIPE_THRESHOLD_PX) return;
+    const isEnoughForSwipe = Math.abs(deltaX) >= SWIPE_THRESHOLD_PX;
+    const shouldSwipe = isHorizontalSwipe && isEnoughForSwipe;
+    
+    if (!shouldSwipe) return;
 
     if (deltaX < 0) {
       goToNextSlide();
