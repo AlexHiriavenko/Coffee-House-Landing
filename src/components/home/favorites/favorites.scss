@@ -4,6 +4,7 @@
 @use "./slider/slider";
 
 .slider {
+  --slider-animation-duration: 0.5s;
   margin-top: 40px;
 }
 
