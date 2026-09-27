@@ -2,7 +2,7 @@ export function getProductId(product, indexInCategory) {
   return `${product.category}-${indexInCategory + 1}`;
 }
 
-function getCardImageUrl(product, indexInCategory) {
+export function getCardImageUrl(product, indexInCategory) {
   return `${import.meta.env.BASE_URL}cards-images/${product.category}/${getProductId(product, indexInCategory)}.png`;
 }
 

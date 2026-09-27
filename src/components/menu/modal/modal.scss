@@ -1,14 +1,14 @@
 @use "../../../styles/globals" as *;
-@use "./media-styles/modal";
 
 #modal-container {
   width: 100vw;
   height: 100vh;
-  padding-inline: 40px;
+  padding: 40px;
   position: fixed;
   top: 0;
   left: 0;
   background-color: var(--bg-overlay);
+  overflow-y: auto;
   @include flex-center;
   opacity: 0;
   pointer-events: none;
@@ -24,7 +24,7 @@
   max-width: 800px;
   padding: 16px;
   border-radius: 40px;
-  background-color: var(--bg-page);
+  background-color: var(--bg-modal);
   transform: scale(0.5);
   transition-duration: 0.5s;
   display: flex;
@@ -154,10 +154,10 @@
 }
 
 .modal-drink-params-btn.active {
-  background-color: var(--bg-container);
+  background-color: var(--bg-modal-control-active);
   color: var(--text-inverse);
   span:first-of-type {
-    background-color: var(--bg-page);
+    background-color: var(--bg-modal-control-active-icon);
     color: var(--text-primary);
   }
 }

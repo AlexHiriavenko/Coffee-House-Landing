@@ -6,6 +6,9 @@
   --bg-page: light-dark(#{$mainBgColor}, #{$darkBgPage});
   --bg-container: light-dark(#{$containerBgColor}, #{$darkBgContainer});
   --bg-overlay: light-dark(#{$backdropColor}, #{$darkBgOverlay});
+  --bg-modal: light-dark(#{$mainBgColor}, #{$darkBgModal});
+  --bg-modal-control-active: light-dark(#{$containerBgColor}, #{$darkBgPage});
+  --bg-modal-control-active-icon: light-dark(#{$mainBgColor}, #{$darkBgContainer});
 
   --text-primary: light-dark(#{$textColorDark}, #{$darkTextPrimary});
   --border-primary: light-dark(#{$borderColorLight}, #{$darkBorderPrimary});
