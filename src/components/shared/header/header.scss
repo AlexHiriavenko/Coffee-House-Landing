@@ -33,12 +33,11 @@ nav {
   transition: all 0.64s ease-in-out;
 
   @media (max-width: $tablet) {
-    position: absolute;
+    position: fixed;
     overflow: hidden;
-    bottom: 0;
-    top: 100px;
+    top: 98px;
     right: 0;
-    height: calc(100% - 100px);
+    bottom: -2px;
     width: 0;
     z-index: 3;
     background-color: var(--bg-page);

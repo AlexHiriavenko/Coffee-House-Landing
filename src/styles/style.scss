@@ -55,6 +55,10 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 1.5;
+
+  &.scroll-locked {
+    overflow: hidden;
+  }
 }
 
 #app {
