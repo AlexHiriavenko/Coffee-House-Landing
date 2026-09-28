@@ -59,7 +59,7 @@
   background-color: inherit;
   transition-duration: 0.5s;
   &:hover {
-    background-color: var(--bg-container);
+    background-color: var(--bg-modal-control-active);
     color: var(--text-inverse);
   }
 }
