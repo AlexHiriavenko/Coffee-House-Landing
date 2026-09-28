@@ -12,6 +12,7 @@
 @use "../components/menu/product-list/product-list";
 @use "../components/menu/product-card/product-card";
 @use "../components/menu/modal/modal";
+@use "../components/menu/modal/media-styles/modal" as modal-media;
 
 :root {
   font-family: "Inter", "system-ui", "Avenir", "Helvetica", "Arial", sans-serif;
@@ -55,6 +56,10 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 1.5;
+
+  &.scroll-locked {
+    overflow: hidden;
+  }
 }
 
 #app {

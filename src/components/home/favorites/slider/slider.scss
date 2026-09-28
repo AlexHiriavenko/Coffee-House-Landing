@@ -1,22 +1,14 @@
-.wrapper-slider {
+.slider__viewport {
   max-width: 480px;
   overflow-x: hidden;
+  touch-action: pan-y;
 }
 
-.slide {
+.slider__track {
   position: relative;
   display: flex;
-  transition-duration: 0.7s;
-}
 
-.slide.start {
-  transform: translateX(0);
-}
-
-.slide.mid {
-  transform: translateX(-100%);
-}
-
-.slide.end {
-  transform: translateX(-200%);
+  &.is-ready {
+    transition: transform var(--slider-animation-duration) ease-in-out;
+  }
 }
