@@ -12,6 +12,10 @@ export function createModalService(modalContainer) {
     ...modalContainer.querySelectorAll('.modal-drink-params.additives .modal-drink-params-btn'),
   ];
 
+  let currentProduct = null;
+  let selectedSizeIndex = 0;
+  const selectedAdditiveIndexes = new Set();
+
   function fillProductSizeButtons(product) {
     sizeButtons.forEach((button, index) => {
       const sizeKey = SIZE_KEYS[index];
@@ -29,26 +33,60 @@ export function createModalService(modalContainer) {
     });
   }
 
-  function resetParams() {
-    sizeButtons.forEach((button, index) => {
-      const isDefault = index === 0;
+  function updateTotalPrice() {
+    const sizePrice = Number(currentProduct.sizes[SIZE_KEYS[selectedSizeIndex]]['add-price']);
+    const additivesPrice = [...selectedAdditiveIndexes].reduce(
+      (sum, index) => sum + Number(currentProduct.additives[index]['add-price']),
+      0,
+    );
 
-      button.classList.toggle('active', isDefault);
-      button.disabled = isDefault;
+    priceEl.textContent = (Number(currentProduct.price) + sizePrice + additivesPrice).toFixed(2);
+  }
+
+  function resetParams() {
+    selectedSizeIndex = 0;
+    selectedAdditiveIndexes.clear();
+
+    sizeButtons.forEach((button, index) => {
+      button.classList.toggle('active', index === selectedSizeIndex);
+      button.disabled = index === selectedSizeIndex;
     });
     additiveButtons.forEach((button) => button.classList.remove('active'));
   }
 
   function fillContent(product, imageUrl) {
+    currentProduct = product;
+
     photo.src = imageUrl;
     photo.alt = product.name;
     nameEl.textContent = product.name;
     aboutEl.textContent = product.description;
-    priceEl.textContent = product.price;
 
     fillProductSizeButtons(product);
     fillProductAdditiveButtons(product);
     resetParams();
+    updateTotalPrice();
+  }
+
+  function selectSize(index) {
+    selectedSizeIndex = index;
+
+    sizeButtons.forEach((button, buttonIndex) => {
+      button.classList.toggle('active', buttonIndex === index);
+      button.disabled = buttonIndex === index;
+    });
+    updateTotalPrice();
+  }
+
+  function toggleAdditive(index) {
+    if (selectedAdditiveIndexes.has(index)) {
+      selectedAdditiveIndexes.delete(index);
+    } else {
+      selectedAdditiveIndexes.add(index);
+    }
+
+    additiveButtons[index].classList.toggle('active', selectedAdditiveIndexes.has(index));
+    updateTotalPrice();
   }
 
   function lockScroll() {
@@ -82,6 +120,12 @@ export function createModalService(modalContainer) {
   function init() {
     closeButton.addEventListener('click', close);
     modalContainer.addEventListener('click', close);
+    sizeButtons.forEach((button, index) => {
+      button.addEventListener('click', () => selectSize(index));
+    });
+    additiveButtons.forEach((button, index) => {
+      button.addEventListener('click', () => toggleAdditive(index));
+    });
   }
 
   return { init, open };
