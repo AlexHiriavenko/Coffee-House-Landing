@@ -23,8 +23,8 @@
       rel="stylesheet"
     />
     <title>Coffee House</title>
-    <script type="module" crossorigin src="/Coffee-House-Landing/assets/main-DrdQDGub.js"></script>
-    <link rel="stylesheet" crossorigin href="/Coffee-House-Landing/assets/main-Bd4DbozL.css">
+    <script type="module" crossorigin src="/Coffee-House-Landing/assets/main-Bqnzeuzn.js"></script>
+    <link rel="stylesheet" crossorigin href="/Coffee-House-Landing/assets/main-BHYXcy3A.css">
   </head>
 
   <body>
@@ -53,7 +53,7 @@
       <path d="M22.5536 50.1449H21.4911C21.4608 49.9707 21.4049 49.8163 21.3235 49.6818C21.2421 49.5455 21.1407 49.4299 21.0195 49.3352C20.8983 49.2406 20.7601 49.1695 20.6048 49.1222C20.4513 49.0729 20.2856 49.0483 20.1076 49.0483C19.7913 49.0483 19.511 49.1279 19.2667 49.287C19.0224 49.4442 18.8311 49.6752 18.6928 49.9801C18.5546 50.2832 18.4854 50.6534 18.4854 51.0909C18.4854 51.536 18.5546 51.911 18.6928 52.2159C18.833 52.519 19.0243 52.7481 19.2667 52.9034C19.511 53.0568 19.7904 53.1335 20.1048 53.1335C20.279 53.1335 20.4419 53.1108 20.5934 53.0654C20.7468 53.018 20.8841 52.9489 21.0053 52.858C21.1284 52.7671 21.2317 52.6553 21.315 52.5227C21.4002 52.3902 21.4589 52.2387 21.4911 52.0682L22.5536 52.0739C22.5138 52.3504 22.4277 52.6099 22.2951 52.8523C22.1644 53.0947 21.993 53.3087 21.7809 53.4943C21.5688 53.6781 21.3207 53.822 21.0366 53.9262C20.7525 54.0284 20.4371 54.0796 20.0906 54.0796C19.5792 54.0796 19.1228 53.9612 18.7212 53.7245C18.3197 53.4877 18.0034 53.1459 17.7724 52.6989C17.5413 52.2519 17.4258 51.7159 17.4258 51.0909C17.4258 50.464 17.5423 49.9281 17.7752 49.483C18.0082 49.036 18.3254 48.6942 18.7269 48.4574C19.1284 48.2207 19.583 48.1023 20.0906 48.1023C20.4144 48.1023 20.7156 48.1477 20.994 48.2387C21.2724 48.3296 21.5205 48.4631 21.7383 48.6392C21.9561 48.8135 22.1351 49.0275 22.2752 49.2813C22.4173 49.5332 22.5101 49.821 22.5536 50.1449Z" fill="currentColor"/>
       </svg>
       </a>
-          <nav>
+          <nav id="primary-navigation">
               <ul class="nav-list">
                   <li class="nav-list__item">
                       <a class="nav-list__link" href="/Coffee-House-Landing/#favorite">Favorite coffee</a>
@@ -122,7 +122,13 @@
                   </g>
                   </svg>
               </a>
-              <button class="header-burger" type="button" aria-label="Open menu">
+              <button
+                  class="header-burger"
+                  type="button"
+                  aria-label="Open menu"
+                  aria-expanded="false"
+                  aria-controls="primary-navigation"
+              >
                   <span class="header-burger__line top"></span>
                   <span class="header-burger__line bottom"></span>
               </button>
@@ -169,16 +175,17 @@
             coffee
           </h2>
           <div class="slider">
-            <div class="slider-body">
+            <div class="slider__body">
               <div class="btn-container">
-                <button class="btn-arrow left">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <button class="btn-arrow left" type="button" aria-label="Previous slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                        focusable="false">
                         <path d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         </path>
                     </svg>
                 </button>      </div>
-              <div class="wrapper-slider">
-                <div class="slide start">
+              <div class="slider__viewport">
+                <div class="slider__track">
                   <div class="drink-card">
                     <img
                       class="drink-card__img"
@@ -233,8 +240,9 @@
                 </div>
               </div>
               <div class="btn-container">
-                <button class="btn-arrow right">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <button class="btn-arrow right" type="button" aria-label="Next slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                        focusable="false">
                         <path d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="currentColor" stroke-linecap="round"
                             stroke-linejoin="round"></path>
                     </svg>
